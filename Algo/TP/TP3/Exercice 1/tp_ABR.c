@@ -1,4 +1,3 @@
-// HUBA Thomas - Licence SPI - 2e année - TP5
 // TP n°3 - Arbre Binaire de recherche
 
 /*

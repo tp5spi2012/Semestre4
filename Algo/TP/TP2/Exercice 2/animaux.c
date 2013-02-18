@@ -1,5 +1,4 @@
-// HUBA Thomas - Licence SPI - 2e Année - Parcours Informatique - TP5
-// TP2 - Exercice 2
+//Exercice 2
 
 /*
  * CONSIGNE TODO

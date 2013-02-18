@@ -1,5 +1,3 @@
-// HUBA Thomas - Primitive oriente arbre n-aire
-
 /*
  * LIB
  */

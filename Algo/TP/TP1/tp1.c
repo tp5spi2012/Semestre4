@@ -1,5 +1,3 @@
-// HUBA THOMAS - Licence SPI - 2e année - Semestre 4 - TP1 Algo & Prog
-
 /*
  * LIB
  */

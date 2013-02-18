@@ -1,5 +1,3 @@
-// HUBA Thomas - Licence SPI - Semestre 4 - Parcours Informatique - TP 2 Algo
-
 // Exercice 1
 
 /*
