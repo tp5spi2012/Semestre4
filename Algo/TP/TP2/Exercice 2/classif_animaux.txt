@@ -1,0 +1,22 @@
+0 -1 Est-il vertébré ?
+1 0 Est-il poilu ?
+2 1 C'est une vache !
+3 1 A-t-il des plumes ?
+4 3 C'est un aigle !
+5 3 A-t-il des écailles soudées ?
+6 5 C'est un crocodile !
+7 5 A-t-il des écailles libres ?
+8 7 C'est un poisson-clown !
+9 7 Est-il à peau nue ?
+10 9 C'est une grenouille !
+11 0 A-t-il une carapace ?
+12 11 Son corps a-t-il plus de 2 parties ?
+13 12 Son corps a-t-il plus de 3 parties ?
+14 13 C'est une abeille !
+15 13 C'est un scolopendre !
+16 12 A-t-il plus de 8 pattes ?
+17 16 C'est un crabe !
+18 16 C'est une araignée !
+19 11 A-t-il une coquille ?
+20 19 C'est une moule !
+21 19 C'est un lombric !
