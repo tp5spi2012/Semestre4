@@ -18,7 +18,7 @@ typedef struct {
 	t_type type;
 	} t_divadmin;
 
-// Definition du type de d'element d'un noeud 
+// Definition du type de d'element d'un noeud
 typedef enum {pays,region,departement,ville} t_type;
 
 /*
@@ -55,6 +55,59 @@ void suppression(t_noeud * noeud){
  */
 // Cree un noeud dans l'arbre
 void creation(){
+
+
+    /*Proposition de Colas
+    division_admin creation(void) {     Cette fonction renvoie un division administrative (DA), sans prendre de param
+
+    division_admin * val;
+    val=(division_admin *)malloc(sizeof(division_admin));
+    int choix;      //Cette variable sert pour le type enum
+
+    //---------Entrée du nom de la DA-----------
+    printf("Entrez le nom de la division administrative : ");
+    scanf("%s", val->nom);
+
+    //Entrée du nombre d'haibitant
+    printf("Entrez le nombre d'habitant : ");
+    scanf("%i", val->population);
+
+    //Choix du type de DA, combiné avec l'entrée du nom de la ville (cette partie fait les deux traitements d'un coup)
+
+    do {
+        printf("Choisissez le type de division administrative : \n Pays -->1\n Région-->2\n Département-->3\n Ville-->4\n votre choix : ");
+        scanf("%i", &choix);
+
+    } while (choix <1 && choix >4);     //boucle pour éviter l'entrée d'autre chose que les valeurs attendues
+
+    switch (choix) {
+
+        case 1 :
+            val->local = pays;
+            printf("Entrez le nom de la capitale : ");
+            scanf("%s", val->capitaleadmin);
+            break;
+
+        case 2 :
+            val->local = region;
+            printf("Entrez le nom du chef-lieu régionnal : ");
+            scanf("%s", val->capitaleadmin);
+            break;
+
+        case 3 :
+            val->local = departement;
+            printf("Entrez le nom de la préfecture : ");
+            scanf("%s", val->capitaleadmin);
+            break;
+
+        case 4 :
+            val->local = ville;
+            printf("Entrez l'ancien nom de la ville : ");
+            scanf("%s", val->capitaleadmin);
+            break;
+    }
+    return val;     //on retourne la division administrative.
+}*/
 	// TODO
 }
 
