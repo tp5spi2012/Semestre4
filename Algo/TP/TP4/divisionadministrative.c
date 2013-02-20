@@ -57,8 +57,8 @@ void suppression(t_noeud * noeud){
 void creation(){
 
 
-    /*Proposition de Colas
-    t_divadmin creation(void) {     Cette fonction renvoie un division administrative (DA), sans prendre de param
+    /*Proposition de Colas Il faudrait l'adapter. Dans le fichier d'arbre, c'est un pointeur sur une divion qui est créé. J'imagine qu'il faut juste la passer en paramètre et faire de cette fonction un void
+    t_divadmin creation(void) {     //Cette fonction renvoie un division administrative (DA), sans prendre de param
 
     t_divadmin * val;
     val=(t_divadmin *)malloc(sizeof(t_divadmin));
