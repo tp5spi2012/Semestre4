@@ -58,10 +58,10 @@ void creation(){
 
 
     /*Proposition de Colas
-    division_admin creation(void) {     Cette fonction renvoie un division administrative (DA), sans prendre de param
+    t_divadmin creation(void) {     Cette fonction renvoie un division administrative (DA), sans prendre de param
 
-    division_admin * val;
-    val=(division_admin *)malloc(sizeof(division_admin));
+    t_divadmin * val;
+    val=(t_divadmin *)malloc(sizeof(t_divadmin));
     int choix;      //Cette variable sert pour le type enum
 
     //---------Entrée du nom de la DA-----------
@@ -85,25 +85,25 @@ void creation(){
         case 1 :
             val->local = pays;
             printf("Entrez le nom de la capitale : ");
-            scanf("%s", val->capitaleadmin);
+            scanf("%s", val->capital);
             break;
 
         case 2 :
             val->local = region;
             printf("Entrez le nom du chef-lieu régionnal : ");
-            scanf("%s", val->capitaleadmin);
+            scanf("%s", val->capital);
             break;
 
         case 3 :
             val->local = departement;
             printf("Entrez le nom de la préfecture : ");
-            scanf("%s", val->capitaleadmin);
+            scanf("%s", val->capital);
             break;
 
         case 4 :
             val->local = ville;
             printf("Entrez l'ancien nom de la ville : ");
-            scanf("%s", val->capitaleadmin);
+            scanf("%s", val->capital);
             break;
     }
     return val;     //on retourne la division administrative.
