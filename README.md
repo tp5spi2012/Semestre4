@@ -11,3 +11,14 @@ Wesh maggle ;)
 >Mails des profs
 
 lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
+
+>Pour les popo de la ligne de la command line =)
+
+Après vos modif :
+
+>git add -A
+>git commit
+ajouter votre coms (sur une ligne !)
+>git push
+
+ploup ploup c'est OK =)
