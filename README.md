@@ -14,7 +14,7 @@ lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
 
 #Git en ligne de commande
 
-Pour les popo de la ligne de la command line =)
+Pour les popos de la command line =)
 
 Pour votre 1ere initialisation, ou en cas de problèmes (uniquement en HTTP, si SSH, reportez-vous a help sur github)
 
