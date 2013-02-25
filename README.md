@@ -8,7 +8,7 @@ Wesh maggle ;)
 
 #Infos =)
 
->Mails des profs
+> Mails des profs
 
 lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
 
@@ -16,17 +16,24 @@ lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
 
 Pour les popo de la ligne de la command line =)
 
+Pour votre 1ere initialisation, ou en cas de problèmes (uniquement en HTTP, si SSH, reportez-vous a help sur github)
+
+> git config --global user.name "Your Name"
+
+> git config --global user.email you@example.com
+
+
 Après vos modif :
 
->git add -A
+> git add -A
 
 Ajoute automatique toutes les fichiers modifiés
 
->git commit
+> git commit
 
 ajouter votre coms (sur une ligne !)
 
->git push
+> git push
 
 push vos modifs vers le serveur =)
 
