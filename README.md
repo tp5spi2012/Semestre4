@@ -19,10 +19,15 @@ Pour les popo de la ligne de la command line =)
 Après vos modif :
 
 >git add -A
+
 Ajoute automatique toutes les fichiers modifiés
+
 >git commit
+
 ajouter votre coms (sur une ligne !)
+
 >git push
+
 push vos modifs vers le serveur =)
 
 ploup ploup c'est OK =)
