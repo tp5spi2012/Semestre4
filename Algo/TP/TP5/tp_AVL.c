@@ -47,6 +47,32 @@ void rotation_gauche(){
 	// END
 }
 
+/* Effectue une rotation gauche de l'arbre autour du pivot passé en paramètre.*/
+void rotation_gauche_bis(t_noeud *pivot) {
+	if(pivot->droit != NULL) {
+		t_noeud *filsd_pivot = pivot->droit;
+	
+		// Chaînage du pere du pivot
+		if(pivot != racine) {
+			if(pivot->pere->gauche == pivot)
+				pivot->pere->gauche = filsd_pivot;
+			else pivot->pere->droit = filsd_pivot;
+		}
+		else racine = filsd_pivot;
+	
+		// Chaînage du pivot
+		pivot->pere = filsd_pivot;
+		pivot->droit = filsd_pivot->gauche;
+	
+		// Chaînage du fils droit du pivot
+		filsd_pivot->pere = pivot->pere;
+		filsd_pivot->gauche = pivot;
+	
+		// Chaînage du fils gauche du fils droit du pivot
+		if(filsd_pivot->gauche != NULL)
+			filsd_pivot->gauche->pere = pivot;
+	}
+}
 /*
  * ROTATION GAUCHE REC
  */
