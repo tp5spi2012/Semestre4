@@ -22,6 +22,9 @@ Pour votre 1ere initialisation, ou en cas de problèmes (uniquement en HTTP, si 
 
 > git config --global user.email you@example.com
 
+Et enfin :
+
+> git commit --amend --reset-author
 
 Après vos modif :
 
