@@ -5,3 +5,9 @@ Merci de faire votre possible pour faire vivre ce dépôt en pushant ce que vous
 Pour toutes réclamations : tp5.spi2012@gmail.com
 
 Wesh maggle ;)
+
+#Infos =)
+
+##Mails des profs
+
+lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
