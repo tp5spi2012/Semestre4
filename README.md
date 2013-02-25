@@ -4,4 +4,4 @@ Merci de faire votre possible pour faire vivre ce dépôt en pushant ce que vous
 
 Pour toutes réclamations : tp5.spi2012@gmail.com
 
-Wesh Ma gueule ;)
+Wesh maggle ;)
