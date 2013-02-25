@@ -1,0 +1,26 @@
+#DATA for Pokemmo :
+
+> Original Rom
+
+http://www.emuparadise.me/Nintendo\_Gameboy\_Advance\_ROMs/Pokemon\_Fire\_Red\_%28U%29%28Squirrels%29/44874
+
+> Java App
+
+http://pokemmo.eu/
+
+#DATA for emulation
+
+> Bios
+
+cf bios in this folder
+
+> Emulation
+
+linux -> mednafen
+windows -> VisualBoy
+
+#OTHER DATA
+
+> Pokedex
+
+comming soon =)
