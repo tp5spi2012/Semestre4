@@ -8,6 +8,6 @@ Wesh maggle ;)
 
 #Infos =)
 
-##Mails des profs
+>Mails des profs
 
 lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
