@@ -1,6 +1,18 @@
-/* Menu du TP 5 - Arbre AVL */
+// NOM Prenom - Licence SPI - 2eme Année - TP5
+// TP n°5
+
+/*
+ * LIB
+ */
+
 #include<stdio.h>
 #include<stdlib.h>
+
+/*
+ * END
+ */
+
+// Primitives
 
 /*
  * AFFICHER
@@ -38,59 +50,58 @@ void afficher_arbre_rec(){
 /*
  * ROTATION GAUCHE
  */
-// Effectue une rotation a gauche
-void rotation_gauche(){
-	if(nc->gauche!=NULL) // Si nc possede un fils
-		tmp = nc->gauche; // On enregistre la position du fils gauche du pere
-	rotation_gauche_rec(nc, tmp);
-	// TODO
-	// END
-}
-
-/* Effectue une rotation gauche de l'arbre autour du pivot passé en paramètre.*/
-void rotation_gauche_bis(t_noeud *pivot) {
-	if(pivot->droit != NULL) {
-		t_noeud *filsd_pivot = pivot->droit;
-	
-		// Chaînage du pere du pivot
-		if(pivot != racine) {
-			if(pivot->pere->gauche == pivot)
-				pivot->pere->gauche = filsd_pivot;
-			else pivot->pere->droit = filsd_pivot;
+// Effectue la rotation gauche simple dans un arbre AVL
+void rotation_gauche(t_noeud * pivot){
+	if(pivot->droit!=NULL){
+		t_noeud * tmp = pivot->droit; // On enregistre le fils droit du pivot
+		if(pivot!=racine){ // Si le pivot n'est pas la racine
+			// On test donc si le pivot est un fils droit ou gauche
+			if((pivot->pere)->droit = pivot) // Si fils droit
+				(pivot->pere)->droit = tmp; // Alors le fils droit du pere du pivot devient tmp
+			else	
+				(pivot->pere)->gauche = tmp; // Sinon tmp devient fils gauche du pere du pivot
 		}
-		else racine = filsd_pivot;
-	
-		// Chaînage du pivot
-		pivot->pere = filsd_pivot;
-		pivot->droit = filsd_pivot->gauche;
-	
-		// Chaînage du fils droit du pivot
-		filsd_pivot->pere = pivot->pere;
-		filsd_pivot->gauche = pivot;
-	
-		// Chaînage du fils gauche du fils droit du pivot
-		if(filsd_pivot->gauche != NULL)
-			filsd_pivot->gauche->pere = pivot;
+		else racine = tmp; // Sinon tmp devient la racine
+		// Mise à jour des chainages
+		pivot->pere = tmp; // pivot devient le fils de tmp
+		pivot->droit = tmp->gauche; // Le fils gauche de tmp devient le fils droit de pivot
+		// Chainage du fils droit de pivot
+		tmp->pere = pivot->pere; // le pere de pivot devient le pere de tmp
+		tmp->gauche = pivot; // Pivot devient le fils gauche de tmp
+		// Chainage du fils gauche du fils droit du pivot
+		if(tmp->gauche!=NULL) // Si tmp possede un fils gauche
+			(tmp->gauche)->pere = pivot; // Le pere du fils gauche de tmp devient pivot
 	}
-}
-/*
- * ROTATION GAUCHE REC
- */
-// Effectue recursivement la rotation a gauche de l'arbre
-void rotation_gauche_rec(){
-	//TODO	
 }
 
 /*
  * ROTATION DROITE
  */
 // Effectue la rotation a droite
-void rotation_droite(){
-
+void rotation_droite(t_noeud * pivot){
+	if(pivot->gauche!=NULL){
+		t_noeud * tmp = pivot->gauche; // On enregistre le fils droit du pivot
+		if(pivot!=racine){ // Si le pivot n'est pas la racine
+			// On test donc si le pivot est un fils droit ou gauche
+			if((pivot->pere)->droit = pivot) // Si fils droit
+				(pivot->pere)->droit = tmp; // Alors le fils droit du pere du pivot devient tmp
+			else	
+				(pivot->pere)->gauche = tmp; // Sinon tmp devient fils gauche du pere du pivot
+		}
+		else racine = tmp; // Sinon tmp devient la racine
+		// Mise à jour des chainages
+		pivot->pere = tmp; // pivot devient le fils de tmp
+		pivot->gauche = tmp->droit; // Le fils droit de tmp devient le fils gauche de pivot
+		// Chainage du fils droit de pivot
+		tmp->pere = pivot->pere; // le pere de pivot devient le pere de tmp
+		tmp->droit = pivot; // Pivot devient le fils droit de tmp
+		// Chainage du fils droit du fils gauche du pivot
+		if(tmp->droit!=NULL) // Si tmp possede un fils droit
+			(tmp->droit)->pere = pivot; // Le pere du fils droit de tmp devient pivot
+	}
 }
 
-void equilibrer(void)
-{	
+void equilibrer(void){	
 	printf("A reprendre d'un TP précédent\n");
 }
 
@@ -134,15 +145,20 @@ void init_tp5(){
 	ajout_filsg(2);
 	posit_pere();
 	ajout_filsd(3);
+	ajout_filsg(1);
+	posit_pere();
+	ajout_filsd(4);
+	// END
 }
 
-/* Programme principal */
-int main(void)
-{	
+/*
+ * PROGRAMME PRINCIPAL
+ */
+int main(void){	
 	int choix;	/* Choix de l'utilisateur */
 	init_arbre(); // Initialisation de l'arbre
-	do
-	{
+	init_tp5(); // Initialise l'arbre pour le TP5
+	do{
 		/* Traitement du choix de l'utilisateur */
 		switch(choix=menu())
 		{	case 1:  ajouter(); break;
