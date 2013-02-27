@@ -1,4 +1,4 @@
-(* Marchand Erwan *)
+(* mccartnay *)
 
 
 (* Question IX *)
