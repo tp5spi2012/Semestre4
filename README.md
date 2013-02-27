@@ -12,6 +12,11 @@ Wesh maggle ;)
 
 lekira@lium.univ-lemans.fr > pour les TP :p (Colas : Enfin ! .... :] )
 
+> Un petit framework C en licence libre qui gère quelques structures de données (arbres, listes) et propose quelques fonctionnalités avancées et fonctions utilitaires.
+
+http://gitorious.org/libsc
+
+
 #Git en ligne de commande
 
 Pour les popos de la command line =)
