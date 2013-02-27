@@ -7,14 +7,14 @@ let rec power2 = function (x,n) -> if n = 0 then 1 else if n mod 2 = 0 then powe
 
 (* Question XI *)
 
-let rec cnp = function (n,p) -> if n = 0 then 1 else p * cnp(p,n-1);;
+let rec cnp = function (n,p) -> if n >= 0 and p >= 0 then 1 else cnp(n-1,p) +  cnp(n-1,p-1);;
 
 (* Question XII *)
 
-let rec somme = function (n,f) -> if n = 0 then f0 else f(n*f) +. somme(n-1,f);;
-somme(30,(function x -> 2.0*.sin(float_of_int x));;
+let rec somme = function (n,f) -> if n = 0 then f 0 else f(n*f) +. somme(n-1,f);;
+somme (30, (function x -> 2.0 *. sin (float_of_int x)));;
 
-let rec sommeTerm = function (n,f,res) -> if n = 0 then res+.f0 else sommeTerm(n-1,f,res+.f(int_of_float n));;
+let rec sommeTerm = function (n,f,res) -> if n = 0 then res+.f 0 else sommeTerm(n-1,f,res+.f(int_of_float n));;
 sommeTerm(15,(function x -> cos(float_of_int x) + float_of_int x),0);;
 
 (* Question XIV *)
