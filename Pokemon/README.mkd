@@ -14,6 +14,10 @@ http://pokemmo.eu/
 
 here the link --> http://lifehacker.com/5988944/retroarch-emulates-nearly-every-classic-gaming-console-on-android
 
+> Un petit articles sur l'émulation, une petite mine d'info =)
+
+http://lifehacker.com/5849961
+
 > Bios
 
 cf bios in this folder
