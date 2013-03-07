@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "meo_ab_tp2.c"
 
 /* Mise en oeuvre par pointeurs d'un arbre binaire */
 

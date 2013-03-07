@@ -173,4 +173,6 @@ int main(void){
 	}
 	while(choix!=7);
 	printf("Au revoir !\n");
+	// END
+	return EXIT_SUCCESS;
 }

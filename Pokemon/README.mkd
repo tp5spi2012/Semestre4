@@ -10,6 +10,10 @@ http://pokemmo.eu/
 
 #DATA for emulation
 
+> Pour Android, un émulateur multi-plateforme très performant et free :D, RetroArch :D
+
+here the link --> http://lifehacker.com/5988944/retroarch-emulates-nearly-every-classic-gaming-console-on-android
+
 > Bios
 
 cf bios in this folder
