@@ -15,7 +15,9 @@ let rec puissance = function (x, n) ->
 (*
 ---------------Question 11°---------------
 *)
-let 
+let rec cnp = function (n, p) ->
+    if n > p && p > 0 then cnp(n-1, p) + cnp(n-1, p-1)
+        else 1;;
 
 
 
