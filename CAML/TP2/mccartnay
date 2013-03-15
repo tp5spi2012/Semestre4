@@ -61,7 +61,7 @@ assoc(lire "mccartnay_donnees2.dat");;
 (* Question 3 *)
 
 
-(* Fonction *)
+(* Fonction de recherche*)
 
 let rec recherche = function (chaine, l) ->
     if l = vide
