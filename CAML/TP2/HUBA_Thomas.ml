@@ -52,5 +52,7 @@ let rec recherche = function (l,mot) ->
 	if fst(tete(l))=mot then snd(tete(l)) + recherche(suite(l),mot)
 	else recherche(suite(l),mot);;
 
+recherche(couple(lire "q3.txt"), Thomas);;
 
+(* Question 4 : 
 
