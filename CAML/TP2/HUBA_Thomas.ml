@@ -37,4 +37,20 @@ let rec somme = function l ->
 
 somme(convert(lire "donnees.dat"));;
 
-(* Question 2 : 
+(* Question 2 : transformer une liste contenant des entiers et des strings, et retourner une liste de couple (string, int) *)
+
+let rec couple = function l -> 
+	if l = vide then vide else
+	cons((tete(l),int_of_string(tete(suite(l))),couple(suite(suite(l)))));;
+
+couple(lire "ploup.dat");;
+
+(* Question 3 : Ecrire une fonction rechercher/sommme qui fait la somme des snd corespondant à un fst bien définit *)
+
+let rec recherche = function (l,mot) -> 
+	if l = vide then 0 else
+	if fst(tete(l))==mot then snd(tete(l)) + recherche(suite(l),mot)
+	else recherche(suite(l),mot);;
+
+
+
