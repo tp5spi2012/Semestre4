@@ -28,3 +28,25 @@ let rec som = function l -> if l=vide then 0 else
 	(tete(l) + som(suite(l)));;
 	
 som (int_of_string_liste(lire "donnees_1.dat"));;
+
+
+(*********************)
+(**    Question 2    **)
+(*********************)
+          
+let rec couple = function l -> if l = vide then vide 
+	else if suite l = vide then failwith "ERROR" 
+	else cons((tete l,int_of_string(tete(suite l))), couple(suite(suite(l))));;
+
+couple (lire "donnees_2.dat");; 
+
+(*********************)
+(**    Question 3    **)
+(*********************)	
+
+let rec recherche = function (l,nom) -> if l = vide then 0 
+	else if fst(tete(l)) = nom then snd(tete(l)) + recherche(suite(l),nom)
+	else recherche(suite(l),nom);;
+
+recherche (couple(lire "donnees_2.dat"), "Thomas");; 
+(* remplacer "Thomas" par le nom souhaité *)	
