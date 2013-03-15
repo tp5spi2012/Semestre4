@@ -29,7 +29,7 @@ let suite = function cons(x,y) -> y;
 
 let convert = function l -> 
 	if l = vide then 0 else
-	cons(int_of_string(tete(l)),int_of_string(suite(l));;
+	cons(int_of_string(tete(l)),convert(suite(l));;
 
 let rec somme = function l -> 
 	if l = vide then 0 else
@@ -43,7 +43,7 @@ let rec couple = function l ->
 	if l = vide then vide else
 	cons((tete(l),int_of_string(tete(suite(l))),couple(suite(suite(l)))));;
 
-couple(lire "ploup.dat");;
+couple(lire "donnees.dat");;
 
 (* Question 3 : Ecrire une fonction rechercher/sommme qui fait la somme des snd corespondant à un fst bien définit *)
 
@@ -52,7 +52,16 @@ let rec recherche = function (l,mot) ->
 	if fst(tete(l))=mot then snd(tete(l)) + recherche(suite(l),mot)
 	else recherche(suite(l),mot);;
 
-recherche(couple(lire "q3.txt"), Thomas);;
+recherche(couple(lire "donnees.dat"), Thomas);;
 
-(* Question 4 : 
+(* Question 4 : Ecrire un ensemble de fonctions qui retourne le nom associé au plus grand entier dans une telle liste *)
+
+let rec couple_max = function (l, couple) -> 
+	if l = vide then fst(couple) else
+	if snd(tete (l)) > snd(couple) then couple_max(suite(l), tete(l)) else
+	couple_max(suite(l), couple);;
+
+let rec max = function l -> couple_max(l,tete(l));;
+
+max(couple(lire "donnees.dat"));;
 
