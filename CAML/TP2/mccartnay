@@ -62,3 +62,13 @@ assoc(lire "mccartnay_donnees2.dat");;
 
 
 (* Fonction *)
+
+let rec recherche = function (chaine, l) ->
+    if l = vide
+        then 0
+    else if fst(tete(l)) = chaine
+        then snd(tete(l)) + recherche_rec(chaine,suite(l))
+    else
+        recherche(chaine,suite(l));;
+
+recherche(assoc("Wesh ma gueule", "mccartnay_donnees2.dat"));;
