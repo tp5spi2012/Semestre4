@@ -19,5 +19,5 @@ let rec int_of_string_liste = function l -> if l = vide then vide else cons(int_
 let rec somme = function l -> if l = vide then 0 else tete(l) + somme(suite(l));;
 somme(int_of_string_liste(lire "donnees_int.dat"));;
 
-let rec q2 = function l -> if l = vide then vide else if suite l = vide then failwith"incomplet" else l cons((tete l,int_of_string(tete(suite l))), q2(suite(suite(l))));;
+let rec q2 = function l -> if l = vide then vide else if suite l = vide then failwith"incomplet" else cons((tete l,int_of_string(tete(suite l))), q2(suite(suite(l))));;
 q2(lire "donnees_string*int.txt");; 
