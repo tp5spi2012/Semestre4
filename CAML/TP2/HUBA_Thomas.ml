@@ -27,10 +27,14 @@ let suite = function cons(x,y) -> y;
 
 (* Question 1 : Lire un fichier et faire la somme des entiers qui le composent *)
 
-let liste = function
+let rec convert = function l -> 
+	if l = vide then 0 else
+	cons(int_of_string(tete(l)),int_of_string(suite(l));;
 
 let rec somme = function l -> 
 	if l = vide then 0 else
-	int_of_string(tete(l)) + somme(suite(l));;
+	(tete(l)) + somme(suite(l));;
+
+somme(convert(lire "donnees.dat"));;
 
 (* Question 2 : 
