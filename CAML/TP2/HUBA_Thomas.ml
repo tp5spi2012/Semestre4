@@ -49,7 +49,7 @@ couple(lire "ploup.dat");;
 
 let rec recherche = function (l,mot) -> 
 	if l = vide then 0 else
-	if fst(tete(l))==mot then snd(tete(l)) + recherche(suite(l),mot)
+	if fst(tete(l))=mot then snd(tete(l)) + recherche(suite(l),mot)
 	else recherche(suite(l),mot);;
 
 
