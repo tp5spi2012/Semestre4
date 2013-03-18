@@ -1,5 +1,29 @@
 (*---------------Colas PICARD --- Groupe TP5 ---- TP N°3-------*)
 
+(*Déclaration des listes et autres fonctions*)
+type 'a liste =vide | cons of  'a* 'a liste;;
+
+let tete = function cons(x, y) -> x
+    | vide -> failwith "impossible";;
+
+let suite = function cons(x, y) -> y
+    |vide -> failwith "impossible";;
+
+let rec lignes = function canal ->
+    try let une_ligne = input_line canal in
+    cons(une_ligne, lignes canal)
+    with End_of_file -> vide;;
+
+let lire = function nom ->
+    let canal = open_in nom in
+        let resu = lignes canal in
+    close_in canal; resu;;
+
+let rec somme = function l ->
+    if l = vide then 0
+    else tete l + somme (suite l);;
+
+
 
 let lire_car =function nom ->
     let canal=open_in nom in
@@ -19,7 +43,7 @@ let rec saute_mot = function vide -> vide
 
 let char2str = function car -> make_string 1 car;;
 
-let rec  premier_mot = function vide -> ""
+let rec premier_mot = function vide -> ""
     | cons(car,reste) -> if is_sep car then ""
         else char2str car ^  premier_mot reste;;
 
@@ -30,3 +54,12 @@ let rec analyselex = function vide->vide
 
 
 let tout= function nom -> analyselex(lire_car nom);;
+
+let rec compte = function (nom, l) ->
+    if vide then 0
+        else if tete l = nom then 1 + compte (nom, suite l)
+            else compte (nom, suite l);;
+
+let rec compte_mot = function l ->
+    
+    | _ vide failwith "Cette liste est vide";;

@@ -80,7 +80,7 @@ let rec le_maximum = fun max_de_2 (cons (tete, vide)) -> tete
         | _ vide -> failwith "impossible";;
 
 let rec q4 = function l ->
-    if l = vide then ("O",0)
+    if l = vide failwith "Zut^^"
         else if suite l = vide then tete l
             else le_maximum max_de_2 l;;
 
