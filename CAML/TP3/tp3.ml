@@ -56,9 +56,25 @@ let rec analyselex = function vide->vide
 let tout= function nom -> analyselex(lire_car nom);;
 
 let rec compte = function (nom, l) ->
-    if vide then 0
+    if l = vide then 0
         else if tete l = nom then 1 + compte (nom, suite l)
             else compte (nom, suite l);;
 
-let rec compte_mot = function l ->
-    if l = vide then failwith
+let rec compte_mot = function (l) ->
+    if l = vide then failwith "Vide"
+        else cons((premier_mot, compte (premier_mot, l)), compte_mot(suite l));;
+
+let max_de_2 = function (a,b) ->
+    if snd(a) > snd (b) then a
+        else b;;
+let rec le_maximum = fun max_de_2 (cons (tete, vide)) -> tete
+    | max_de_2 (cons (tete, suite)) ->
+        max_de_2 (tete, (le_maximum max_de_2 suite))
+        | _ vide -> failwith "impossible";;
+
+let rec q4 = function l -> 
+   if l = vide then failwith "Zut"
+     else if suite l = vide then tete l
+       else le_maximum max_de_2 l;;
+
+tout("libre.txt");;
