@@ -71,4 +71,20 @@ let rec recherche = function (chaine, l) ->
     else
         recherche(chaine,suite(l));;
 
-recherche(assoc("Wesh ma gueule", "mccartnay_donnees2.dat"));;
+recherche("Whesh ma gueule",assoc(lire ("donnees2.dat")));;
+ 
+(* Question 4 *)
+ 
+let rec dominant = function (binome, l) ->
+    if l = vide
+        then fst(binome)
+    else if snd(binome) < snd(tete(l))
+        then dominant(tete(l), suite(l))
+    else
+        dominant(suite(l), binome(l));;
+
+let rec maximum = function l ->
+    dominant(tete(l), l);;
+
+maximum(dominant(tete(l), l);;
+
