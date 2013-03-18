@@ -61,5 +61,4 @@ let rec compte = function (nom, l) ->
             else compte (nom, suite l);;
 
 let rec compte_mot = function l ->
-    
-    | _ vide failwith "Cette liste est vide";;
+    if l = vide then failwith
