@@ -1,3 +1,4 @@
+ 
 (* author ==> mccartnay *)
 
 
@@ -88,3 +89,24 @@ let rec maximum = function l ->
 
 maximum(dominant(tete(l), l);;
 
+(* TP 3 *)
+
+let frontiere = function carac ->
+    if carac = ' ' | carac = '\n'
+        then true
+    else
+        false;;
+
+let assemblageCarac = function l ->
+    if frontiere(tete(l)) = true
+        then
+    else
+        cons(tete(l), assemblageCarac(suite(l)));;
+
+let rec motDominant = function (mot, l) ->
+    if l = vide
+        then cons((mot, 1), suite(l))
+    else if mot = fst(tete(l))
+        then cons((mot, 1 + snd(tete l)), suite(l))
+    else
+        cons(tete l, motDominant(mot, (suite l)));;
