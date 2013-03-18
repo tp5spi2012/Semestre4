@@ -1,0 +1,41 @@
+(* Karassev Marc *)
+
+type 'a liste = vide | cons of  'a* 'a liste;;
+let rec lignes = function canal ->
+          try let une_ligne = input_line canal in
+                cons(une_ligne, lignes canal)
+          with End_of_file -> vide;;
+let lire = function nom ->
+       let canal = open_in nom in
+          let resu = lignes canal in
+               close_in canal; resu;;
+
+
+let tete = function cons(x,_) -> x | _ -> failwith "impossible";;
+let suite = function cons(_,y) -> y | _ -> failwith "impossible";;
+
+(* q1 *)
+let rec int_of_string_liste = function l -> if l = vide then vide else cons(int_of_string(tete(l)), int_of_string_liste(suite(l)));;
+
+let rec somme = function l -> if l = vide then 0 else tete(l) + somme(suite(l));;
+
+somme(int_of_string_liste(lire "donnees_int.dat"));;
+
+(* q2 *)
+let rec q2 = function l -> if l = vide then vide else if suite l = vide then failwith"incomplet" else cons((tete l,int_of_string(tete(suite l))), q2(suite(suite(l))));;
+
+q2(lire "donnees_string*int.txt");;
+
+(* q3 *)
+let rec q3_bis = function (nom,l) -> if l = vide then 0 else if fst(tete l) = nom then snd(tete l) + q3_bis(nom,suite l) else q3_bis(nom,suite l);;  
+
+let q3 = function (nom,nom_fichier) -> q3_bis(nom,q2(lire nom_fichier));;
+
+q3("Anice", "donnees_string*int.txt");;
+
+(* q4 *)
+let rec q4_bis = function (l,couple) -> if l = vide then fst(couple) else if snd(tete l) > snd(couple) then q4_bis(suite l, tete l) else q4_bis(suite l, couple);;
+
+let rec q4 = function l -> q4_bis(l,tete l);;  
+
+q4(q2(lire "donnees_string*int.txt"));;
