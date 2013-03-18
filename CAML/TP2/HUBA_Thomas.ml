@@ -27,11 +27,11 @@ let suite = function cons(x,y) -> y;
 
 (* Question 1 : Lire un fichier et faire la somme des entiers qui le composent *)
 
-let convert = function l -> 
+let convert = function l ->
 	if l = vide then 0 else
 	cons(int_of_string(tete(l)),convert(suite(l));;
 
-let rec somme = function l -> 
+let rec somme = function l ->
 	if l = vide then 0 else
 	(tete(l)) + somme(suite(l));;
 
@@ -39,7 +39,7 @@ somme(convert(lire "donnees.dat"));;
 
 (* Question 2 : transformer une liste contenant des entiers et des strings, et retourner une liste de couple (string, int) *)
 
-let rec couple = function l -> 
+let rec couple = function l ->
 	if l = vide then vide else
 	cons((tete(l),int_of_string(tete(suite(l))),couple(suite(suite(l)))));;
 
@@ -47,7 +47,7 @@ couple(lire "donnees.dat");;
 
 (* Question 3 : Ecrire une fonction rechercher/sommme qui fait la somme des snd corespondant à un fst bien définit *)
 
-let rec recherche = function (l,mot) -> 
+let rec recherche = function (l,mot) ->
 	if l = vide then 0 else
 	if fst(tete(l))=mot then snd(tete(l)) + recherche(suite(l),mot)
 	else recherche(suite(l),mot);;
@@ -56,7 +56,7 @@ recherche(couple(lire "donnees.dat"), Thomas);;
 
 (* Question 4 : Ecrire un ensemble de fonctions qui retourne le nom associé au plus grand entier dans une telle liste *)
 
-let rec couple_max = function (l, couple) -> 
+let rec couple_max = function (l, couple) ->
 	if l = vide then fst(couple) else
 	if snd(tete (l)) > snd(couple) then couple_max(suite(l), tete(l)) else
 	couple_max(suite(l), couple);;
