@@ -6,7 +6,13 @@
 
 #define MAX1 1000
 #define MAX2 5000
-#define BOUCLE 200 
+#define BOUCLE 1
+
+extern unsigned int count_obj2s;
+extern unsigned int count_obj2;
+extern unsigned int count_obj1s;
+extern unsigned int count_obj1;
+
 
 int
 main()
@@ -23,10 +29,16 @@ main()
   srand( (unsigned int) getpid() ) ; 
 
   liste = obj2s_creer(0) ; 
+      if( ( noerr = obj2s_detruire( &liste ) ) )
+	{
+	  printf( "Sortie avec code erreur %d\n" , noerr ) ;
+	  return(noerr) ; 
+	}
 
   for( b=0 ; b<BOUCLE ; b++ ) 
     {
       taille = rand() % MAX2 ;
+      taille = 10;
 
       printf( "%3d : Creation + copie liste de %6d objets obj2_t..." , b , taille ) ; fflush(stdout ) ; 
 
@@ -67,5 +79,9 @@ main()
 
   printf( "Fin programme de colmatage\n"); 
 
+	  printf("COMPTEUR delta obj2s : %i\n", count_obj2s);
+	  printf("COMPTEUR delta obj2  : %i\n", count_obj2);
+	  printf("COMPTEUR delta obj1s : %i\n", count_obj1s);
+	  printf("COMPTEUR delta obj1  : %i\n", count_obj1);
   return(OK); 
 }

@@ -6,6 +6,7 @@
 /*
  * VARIABLES GLOBALES 
  */
+unsigned int count_obj1s = 0;
 
 
 /*
@@ -102,6 +103,7 @@ obj1s_t * obj1s_creer( const int nb_obj1s )
       liste_obj1s->nb = nb_obj1s ;
     }
 
+  count_obj1s++;
   return(liste_obj1s);
 }
 
@@ -112,8 +114,19 @@ obj1s_t * obj1s_creer( const int nb_obj1s )
 extern
 err_t obj1s_detruire( obj1s_t ** liste)
 {
-
-  return(OK) ;
+	/* fprintf(stderr, "DEL: obj1s..."); */
+	/* NB: un seul obj1s dans la liste */
+	int i;
+	for(i = 0; i < (*liste)->nb; i++) {
+		obj1_detruire(&(*liste)->liste[i]);
+	}
+	free((*liste)->liste);
+	free(*liste);
+	*liste = NULL;
+	count_obj1s--;
+	
+	/* fprintf(stderr, "...OK\n"); */
+	return(OK) ;
 }
 
 

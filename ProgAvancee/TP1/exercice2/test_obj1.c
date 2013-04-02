@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <obj1.h>
 
+extern unsigned int count_obj1;
+
 int
 main() 
 {
@@ -48,7 +50,7 @@ main()
       return(noerr) ; 
     }
   
-  printf( "Fin du programme des test sur les objets de type obj1_t\n" ) ; 
+  printf( "Fin du programme des test sur les objets de type obj1_t (%i)\n", count_obj1 ) ; 
 
   return(0) ; 
 }

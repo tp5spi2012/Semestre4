@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <obj2s.h>
 
+extern unsigned int count_obj2s;
+
 #define N1 5 
 #define N2 10 
 int
@@ -24,6 +26,14 @@ main()
 
   printf( "Test vide sur liste vide\n");
   ( obj2s_vide( liste )  ? printf("-->OK\n") : printf("-->KO\n") ) ;
+
+  printf( "Test destruction liste "); fflush(stdout) ; 
+  if( ( noerr = obj2s_detruire( &liste ) ) )
+    {
+      printf( "Sortie avec code erreur %d\n" , noerr ) ;
+	  return(noerr) ; 
+    }
+  printf("-->OK\n" ) ;
 
   liste = obj2s_creer(N2) ;
   for( i=0 ; i<N2 ; i++ ) 
@@ -69,7 +79,7 @@ main()
     }
   printf("-->OK\n" ) ; 
 
-  printf( "Fin programme de test des listes d'objets obj2_t\n"); 
+  printf( "Fin programme de test des listes d'objets obj2s_t (%d)\n", count_obj2s); 
 
   return(OK); 
 }

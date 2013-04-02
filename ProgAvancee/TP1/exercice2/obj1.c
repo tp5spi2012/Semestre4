@@ -6,6 +6,7 @@
 /*
  * VARIABLE LOCALE
  */
+unsigned int count_obj1 = 0;
 
 /* 
  * FONCTIONS
@@ -36,14 +37,20 @@ obj1_t * obj1_creer()
   sprintf( w , "[objet1] %lu" , cpt ); 
   strcpy( obj1->attributs , w ); 
     
+  count_obj1++;
   return( obj1 ) ;
 }
 
 extern 
 err_t obj1_detruire( obj1_t ** obj1 ) 
 {
-
-  return(OK) ; 
+	if((*obj1) != NULL) {
+		free((*obj1)->attributs); 
+		free((*obj1));
+		*obj1 = NULL;
+		count_obj1--;
+	}
+	return(OK) ; 
 }
 
 

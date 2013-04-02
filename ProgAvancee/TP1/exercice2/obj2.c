@@ -6,6 +6,7 @@
 /*
  * VARIABLE LOCALE
  */
+unsigned int count_obj2 = 0;
 
 /* 
  * FONCTIONS
@@ -50,6 +51,7 @@ obj2_t * obj2_creer( const int nb_obj1 )
     }
 
   cpt++ ;
+  count_obj2++;
   char w[TAILLE] ;
   sprintf( w , "[objet2] %lu" , cpt ); 
   strcpy( obj2->attributs , w ); 
@@ -60,8 +62,17 @@ obj2_t * obj2_creer( const int nb_obj1 )
 extern 
 err_t obj2_detruire( obj2_t ** obj2 ) 
 {
-
-  return(OK) ; 
+	/* DESTRUCTION DE CHAQUE OBJ2 DE LA LISTE*/
+	/* libération du contenu de l'objet*/
+	/*fprintf(stderr, "DEL: obj2...");*/
+	obj1s_detruire(&((*obj2)->liste_objets)); 
+	free((*obj2)->attributs); 
+	/* enfin, on libere l'objet*/
+	free(*obj2);
+	*obj2 = NULL;
+	count_obj2--;
+	/*fprintf(stderr, "...OK for obj2\n");*/
+	return(OK) ; 
 }
 
 
@@ -88,8 +99,8 @@ err_t obj2_copier( obj2_t ** obj2_cible , obj2_t * const obj2_source )
 	}
     }
  
-  if( ( noerr = obj1s_detruire( &((*obj2_cible)->liste_objets)) ) )
-    return(noerr) ; 
+  /*if( ( noerr = obj1s_detruire( &((*obj2_cible)->liste_objets)) ) )
+    return(noerr) ; */
 
   if( ( noerr = obj1s_copier( &((*obj2_cible)->liste_objets) , obj2_source->liste_objets ) ) )
     return(noerr) ; 

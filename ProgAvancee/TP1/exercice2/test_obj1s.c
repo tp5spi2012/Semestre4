@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <obj1s.h>
 
+extern unsigned int count_obj1s;
+
 #define N 10 
 int
 main()
@@ -26,6 +28,14 @@ main()
   printf( "Test vide sur liste vide\n");
   ( obj1s_vide( liste )  ? printf("-->OK\n") : printf("-->KO\n") ) ;
 
+  printf( "Test destruction liste "); fflush(stdout) ; 
+  if( ( noerr = obj1s_detruire( &liste ) ) )
+    {
+      printf( "Sortie avec code erreur %d\n" , noerr ) ;
+	  return(noerr) ; 
+    }
+  printf("-->OK\n" ) ; 
+
   liste = obj1s_creer(N) ;
   for( i=0 ; i<N ; i++ ) 
     {
@@ -37,7 +47,7 @@ main()
 	}
       obj1_detruire(&objet) ;
     }
-  
+
   printf( "Test vide sur liste vide\n");
   ( obj1s_vide( liste )  ? printf("-->KO\n") : printf("-->OK\n") ) ;
 
@@ -62,7 +72,15 @@ main()
     }
   printf("-->OK\n" ) ; 
 
-  printf( "Fin programme de test des listes d'objets obj1_t\n"); 
+  printf( "Test destruction liste copiee "); fflush(stdout) ; 
+  if( ( noerr = obj1s_detruire( &copie_liste ) ) )
+    {
+      printf( "Sortie avec code erreur %d\n" , noerr ) ;
+	  return(noerr) ; 
+    }
+  printf("-->OK\n" ) ; 
+
+  printf( "Fin programme de test des listes d'objets obj1_t (%d)\n", count_obj1s); 
 
   return(OK); 
 }

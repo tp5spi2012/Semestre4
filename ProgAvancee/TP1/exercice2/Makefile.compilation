@@ -8,7 +8,7 @@
 # Valeurs possibles : yes , no  
 DEBUG=yes
 # Valeurs possibles : apple , linux 
-ARCH=linux
+ARCH=apple
 
 ifeq ($(DEBUG),yes)
 	 CFLAGS=-Wall -ansi -g -D_DEBUG_
