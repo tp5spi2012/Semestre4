@@ -1,24 +1,27 @@
-Je vous colle une solution possible au problème.
+Une solution possible au problème.
 
 
-N'oubliez pas : 
+_N'oubliez pas :_ 
 90% des problèmes viennent de l'absence de commentaires qui rendent la lecture et l'interprétation difficile.
 Et du code qui est remplis de petit détails problématiques...
 
 
-Exemple:
+_Exemple:_
 Il vous reste 16 bits systématiquement non libéré avec prog2 ?
 Regardez avant la grande boucle principale dans prog2.c : une liste vide est créée, jamais libérée...
 
 Les copies sont porteuses de problèmes ?
-logique, les fonctions de copies sont vérolées par des if impertinents...
+logique, une des fonction de copie est vérolée par un if impertinent...
 
 
 
 
-Histoire de faire les choses bien :
+_Histoire de faire les choses bien :_
 j'ai push la version initiale, puis ma version finale. Consultez les logs du second commit pour voir directement les modifications réalisées 
 sur les fichiers.
 
+_important :_
+prog2.c à été modifié pour ne créé systématiquement que 10 objets...
+Modifiez le pour le rendre comme avant :)
 
 
