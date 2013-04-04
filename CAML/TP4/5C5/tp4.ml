@@ -9,8 +9,15 @@ let suite = function cons(x, y) -> y
 	| vide -> failwith "impossible";;
 
 let rec inserer = fun element l -> if l = vide then cons (element, vide)
-	else if element < tete l then cons (element, l)
+	else if fst(element) < fst(tete l) then cons (element, l)
 		else cons(tete l, inserer element (suite l));;
+
+let rec inserer_arbre = fun el V -> N(el, V, V)
+	|el(N(r, ag, ad)) -> if fst(el) <= fst(r) then N(r, (inserer_arbre el ag), ad)
+	else N(r, ag, (inserer_arbre el ad));;
+
+let rec ajouter = fun l1 l2 -> if l1 = vide then l2
+	else cons(tete l1,(ajouter (suite l1) l2));;
 
 (*Question 1*)
 (*méthode deux*)
@@ -31,3 +38,12 @@ let ajouter_vente_un = function (x , l) -> cons(x, l);;
 (*Méthode Deux*)
 
 let ajouter_vente_deux = function (x, l) -> inserer x l;;
+
+(*Méthode trois*)
+
+let ajouter_vente_trois = fun x bananier-> (inserer_arbre x bananier);;
+
+(*Question 3*)
+
+let rec transposition = function V -> vide
+	|N(el, ag, ad) -> (inserer el (ajouter (transposition ag) (transposition ad)));;
