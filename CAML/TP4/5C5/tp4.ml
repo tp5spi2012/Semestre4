@@ -2,6 +2,7 @@
 type 'a liste = vide | cons of 'a * 'a liste;;
 type 'a arbre = V | N of 'a * 'a arbre * 'a arbre;;
 
+(*déclaration de fonctions diverses pour listes et arbres*)
 let tete = function cons(x, y) -> x
 	| vide -> failwith "impossible";;
 
@@ -18,6 +19,8 @@ let rec inserer_arbre = fun el V -> N(el, V, V)
 
 let rec ajouter = fun l1 l2 -> if l1 = vide then l2
 	else cons(tete l1,(ajouter (suite l1) l2));;
+
+(*déclaration de fonction issues du tp3 pour répondre à la question quatre*)
 
 (*Question 1*)
 (*méthode deux*)
@@ -47,3 +50,7 @@ let ajouter_vente_trois = fun x bananier-> (inserer_arbre x bananier);;
 
 let rec transposition = function V -> vide
 	|N(el, ag, ad) -> (inserer el (ajouter (transposition ag) (transposition ad)));;
+
+(*Question Quatre*)
+
+let compteur_arbre = function poirier -> fst(q4(q2(transposition(poirier))));;
