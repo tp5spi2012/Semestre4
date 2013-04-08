@@ -9,7 +9,9 @@ let tete = function cons(x, y) -> x
 let suite = function cons(x, y) -> y
     |vide -> failwith "impossible";;
 
+(*Declaration de char2str*)
 
+let char2str = function car -> make_string 1 car;;
 
 (*Déclaration de fonctions de lecture de fichier *)
 
