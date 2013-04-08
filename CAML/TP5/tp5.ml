@@ -3,12 +3,6 @@
 
 (*Déclaration de fonctions de lecture de fichier *)
 
-let is_sep = function ' ' | '\n' -> true
-    | _ -> false;;
-
-let is_sepu = function '+' | '-' | '*' | '(' | ')' -> true
-    | _  -> false;;
-
 let lire_car =function nom ->
     let canal=open_in nom in
         let rec lirea =function  () -> 
@@ -17,8 +11,22 @@ let lire_car =function nom ->
     End_of_file -> begin close_in canal;vide end
     in  lirea ();;
 
+
+(*déclaration des fonctions de traitement de la liste obtenue après lecteur*)
+
+let is_sep = function ' ' | '\n' -> true
+    | _ -> false;;
+
+let is_sepu = function '+' | ' - ' | ' * ' | ' ( '| ' ) ' -> true
+    | _  -> false;;
+
 let rec saute_terme = function vide -> vide
-    | cons(car, reste) as l ->
+    | cons(car, reste) as l -> if is_sep car or is_sepu car then l
+    else saute_terme reste;;
+
+let rec premier_terme = function vide -> " "
+    |cons(car ,reste) -> if is_sep car or is_sepu car then " "
+    else char2str car ^ premier_terme reste;;
 
 let rec analyselex = function vide->vide
     |cons (car,reste) as l -> if is_sep car then
@@ -40,18 +48,19 @@ let rec trans = fun f vide -> vide
 
 let calculer_ebp = function ebp -> calculer ebp vide;;
 
+let reduire = function cons(t2, cons (ope cons( t1, reste))) -> cons(valeur ope t1 t2, reste)
+    |_ -> failwith "erreur";;
+
 let rec calculer = fun vide (cons(entier v, vide)) -> v
     | (cons(po, reste)) pile -> calculer reste pile
     | (cons(pf, reste)) pile -> calculer reste (reduire pile)
     | (cons(t, reste)) pile -> calculer reste (cons(t, pile))
-    | _ _ -> failwith "erreur calculer" ;;
+    | _ _ -> failwith "erreur dans la fonction  calculer" ;;
 
-let reduire = function cons(t2, cons (ope cons( t1, reste))) -> cons(valeur ope t1 t2, reste)
-    |_ -> failwith "erreur";;
 
 let valeur = fun (op o as ope) (entier v1) (entier v2) ->
     entier ((op2fun ope) v1 v2)
-    | _ _ _ -> failwith "erreur";;
+    | _ _ _ -> failwith "erreur dans la fonction valeur";;
 
 let op2fun = function op "+" -> prefix +
     |op "-" -> prefix -
@@ -59,4 +68,6 @@ let op2fun = function op "+" -> prefix +
     |op "/" -> prefix /
     | _ -> failwith "impossible";;
 
+(*Question 1*)
 
+let lecture_et_calcul_ebp = function nom -> calculer_ebp (analyselex(lire_car nom));;
