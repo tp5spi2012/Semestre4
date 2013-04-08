@@ -1,5 +1,15 @@
 (*Colas PICARD ---- Groupe de TP1 ---- TP N° 5*)
 
+(*Déclarations de la liste*)
+type 'a liste =vide | cons of  'a* 'a liste;;
+
+let tete = function cons(x, y) -> x
+    | vide -> failwith "impossible";;
+
+let suite = function cons(x, y) -> y
+    |vide -> failwith "impossible";;
+
+
 
 (*Déclaration de fonctions de lecture de fichier *)
 
@@ -14,10 +24,10 @@ let lire_car =function nom ->
 
 (*déclaration des fonctions de traitement de la liste obtenue après lecteur*)
 
-let is_sep = function ' ' | '\n' -> true
+let is_sep = function  ` ` | `\n` -> true
     | _ -> false;;
 
-let is_sepu = function '+' | ' - ' | ' * ' | ' ( '| ' ) ' -> true
+let is_sepu = function `+` | `-` | `*` | `(` | `)` -> true
     | _  -> false;;
 
 let rec saute_terme = function vide -> vide
@@ -71,3 +81,5 @@ let op2fun = function op "+" -> prefix +
 (*Question 1*)
 
 let lecture_et_calcul_ebp = function nom -> calculer_ebp (analyselex(lire_car nom));;
+
+lecture_et_calculer_ebp "expinv.txt";;
