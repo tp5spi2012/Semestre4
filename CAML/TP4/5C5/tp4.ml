@@ -25,12 +25,12 @@ let rec ajouter = fun l1 l2 -> if l1 = vide then l2
 (*Question 1*)
 (*méthode deux*)
 let rec total_vendu_un = function l -> if l = vide then 0
-	else fst(tete l) + total_vendu_un(suite l);;
+	else snd(tete l) + total_vendu_un(suite l);;
 
 (*méthode trois*)
 
 let rec total_vendu_deux = function V-> 0
-	|N(el, ag, ad) -> fst(el) + total_vendu_deux ag + total_vendu_deux ad;;
+	|N(el, ag, ad) -> snd(el) + total_vendu_deux ag + total_vendu_deux ad;;
 
 (*Question 2*)
 
