@@ -58,6 +58,11 @@ let ch2terme = function
 let rec trans = fun f vide -> vide
     | f (cons(tete, reste)) -> cons((f tete), (trans f reste));;
 
+
+let valeur = fun (op o as ope) (entier v1) (entier v2) ->
+    entier ((op2fun ope) v1 v2)
+    | _ _ _ -> failwith "erreur dans la fonction valeur";;
+
 let reduire = function cons(t2, cons (ope, cons( t1, reste))) -> cons(valeur ope t1 t2, reste)
     |_ -> failwith "erreur";;
 
@@ -69,9 +74,6 @@ let rec calculer = fun vide (cons(entier v, vide)) -> v
 
 let calculer_ebp = function ebp -> calculer ebp vide;;
 
-let valeur = fun (op o as ope) (entier v1) (entier v2) ->
-    entier ((op2fun ope) v1 v2)
-    | _ _ _ -> failwith "erreur dans la fonction valeur";;
 
 let op2fun = function op "+" -> prefix +
     |op "-" -> prefix -
@@ -81,6 +83,6 @@ let op2fun = function op "+" -> prefix +
 
 (*Question 1*)
 
-let lecture_et_calcul_ebp = function nom -> calculer_ebp (analyselex(lire_car nom));;
+let lecture_et_calcul_ebp = function nom -> calculer_ebp (trans char2terme (analyselex(lire_car nom)));;
 
 lecture_et_calculer_ebp "expinv.txt";;
