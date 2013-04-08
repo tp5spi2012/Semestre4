@@ -45,7 +45,7 @@ let rec analyselex = function vide->vide
     analyselex reste
         else if is_sepu car then
             cons(char2str car, analyselex reste)
-            else cons(premier_terme l , analyselex reste (saute_terme l);;
+            else cons(premier_terme l , analyselex (saute_terme l));;
 
 type terme = po|pf|op of string| entier of int;;
 
@@ -58,9 +58,7 @@ let ch2terme = function
 let rec trans = fun f vide -> vide
     | f (cons(tete, reste)) -> cons((f tete), (trans f reste));;
 
-let calculer_ebp = function ebp -> calculer ebp vide;;
-
-let reduire = function cons(t2, cons (ope cons( t1, reste))) -> cons(valeur ope t1 t2, reste)
+let reduire = function cons(t2, cons (ope, cons( t1, reste))) -> cons(valeur ope t1 t2, reste)
     |_ -> failwith "erreur";;
 
 let rec calculer = fun vide (cons(entier v, vide)) -> v
@@ -69,6 +67,7 @@ let rec calculer = fun vide (cons(entier v, vide)) -> v
     | (cons(t, reste)) pile -> calculer reste (cons(t, pile))
     | _ _ -> failwith "erreur dans la fonction  calculer" ;;
 
+let calculer_ebp = function ebp -> calculer ebp vide;;
 
 let valeur = fun (op o as ope) (entier v1) (entier v2) ->
     entier ((op2fun ope) v1 v2)
