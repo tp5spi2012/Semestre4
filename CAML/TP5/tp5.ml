@@ -36,8 +36,8 @@ let rec saute_terme = function vide -> vide
     | cons(car, reste) as l -> if is_sep car or is_sepu car then l
     else saute_terme reste;;
 
-let rec premier_terme = function vide -> " "
-    |cons(car ,reste) -> if is_sep car or is_sepu car then " "
+let rec premier_terme = function vide -> ""
+    |cons(car ,reste) -> if is_sep car or is_sepu car then ""
     else char2str car ^ premier_terme reste;;
 
 let rec analyselex = function vide->vide
@@ -58,6 +58,11 @@ let ch2terme = function
 let rec trans = fun f vide -> vide
     | f (cons(tete, reste)) -> cons((f tete), (trans f reste));;
 
+let op2fun = function op "+" -> prefix +
+    |op "-" -> prefix -
+    |op "*" -> prefix *
+    |op "/" -> prefix /
+    | _ -> failwith "impossible";;
 
 let valeur = fun (op o as ope) (entier v1) (entier v2) ->
     entier ((op2fun ope) v1 v2)
@@ -74,15 +79,11 @@ let rec calculer = fun vide (cons(entier v, vide)) -> v
 
 let calculer_ebp = function ebp -> calculer ebp vide;;
 
+let rec calculer_inv = function vide -> vide
 
-let op2fun = function op "+" -> prefix +
-    |op "-" -> prefix -
-    |op "*" -> prefix *
-    |op "/" -> prefix /
-    | _ -> failwith "impossible";;
 
 (*Question 1*)
-
-let lecture_et_calcul_ebp = function nom -> calculer_ebp (trans char2terme (analyselex(lire_car nom)));;
+let lire_ebp = 
+let lecture_et_calcul_inv = function nom ->  (trans char2terme (analyselex(lire_car nom)));;
 
 lecture_et_calculer_ebp "expinv.txt";;
