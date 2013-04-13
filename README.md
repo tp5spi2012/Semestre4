@@ -46,3 +46,9 @@ ajouter votre coms (sur une ligne !)
 push vos modifs vers le serveur =)
 
 ploup ploup c'est OK =)
+
+#Petite note
+
+Pour le confort, merci d'éviter les caractères spéciaux ;)
+
+> é è ~ / \ % ù 
