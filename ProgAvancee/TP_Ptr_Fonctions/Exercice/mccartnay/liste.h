@@ -5,21 +5,6 @@
 
 extern unsigned long int liste_cpt;
 
-
-/*
- *  DEFINITION OBJET "LISTE"
- */
-
-typedef struct liste_s liste_t;
-
-struct liste_s {
-	#include <attributs_objet.h>
-	objet_t * objet;
-	liste_t * prec;
-	liste_t * suiv;
-	int nb;
-};
-
 /*
  * FONCTIONS
  */

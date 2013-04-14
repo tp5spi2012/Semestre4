@@ -32,6 +32,10 @@ static err_t string_detruire( string_t ** string ) {
 	return OK;
 }
 
+static err_t string_detruire_cb (objet_t ** string) {
+	string_detruire((string_t **) string);
+}
+
 static
 void string_afficher( string_t * const string ) 
 {
@@ -44,12 +48,16 @@ void string_afficher( string_t * const string )
   printf( "}" ) ; 
 }
 
+static void string_afficher_cb (objet_t * const string) {
+	string_afficher((string_t *) string);
+}
+
 extern string_t * string_creer( char * const chaine ) {
 	string_t * string = NULL;
 	string = malloc((strlen(chaine) + 1) * sizeof(char));
 	strcpy(string -> string, chaine);
-	string -> afficher = void (objet_t*)string_afficher;
-	string -> detruire = err_t (objet_t*)string_detruire;
+	string -> afficher = string_afficher_cb;
+	string -> detruire = string_detruire_cb;
 	string_cpt++;
 	return string;
 }

@@ -31,6 +31,10 @@ static err_t fraction_detruire(fraction_t ** fraction) {
 	return OK;
 }
 
+static err_t fraction_detruire_cb (objet_t ** fraction) {
+	fraction_detruire((fraction_t **) fraction);
+}
+
 static
 void fraction_afficher( fraction_t * const fraction )
 {
@@ -43,13 +47,17 @@ void fraction_afficher( fraction_t * const fraction )
   printf( "}" ) ;
 }
 
+static void fraction_afficher_cb (objet_t * fraction) {
+	fraction_afficher((fraction_t *) fraction);
+}
+
 extern fraction_t * fraction_creer (const int numerateur, const int denominateur) {
 	fraction_t * fraction = NULL;
 	fraction = malloc(sizeof(fraction_t));
 	fraction -> numerateur = numerateur;
 	fraction -> denominateur = denominateur;
-	fraction -> afficher = void (objet_t*)fraction_afficher;
-	fraction -> detruire = err_t (objet_t**)fraction_detruire;
+	fraction -> afficher = fraction_afficher_cb;
+	fraction -> detruire = fraction_detruire_cb;
 	fraction_cpt++;
 	return fraction;
 }

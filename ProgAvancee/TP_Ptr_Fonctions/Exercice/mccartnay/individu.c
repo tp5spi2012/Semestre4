@@ -54,9 +54,8 @@ extern individu_t * individu_creer (char * const prenom, char * const nom) {
 	strcpy(individu -> nom, nom);
 	individu -> prenom = malloc((strlen(prenom) + 1) * sizeof(char));
 	strcpy(individu -> prenom, prenom);
-	individu -> afficher = malloc(sizeof(static void individu_afficher_cb()));
-	individu -> afficher = static void (*individu_afficher_cb)(objet_t*);
-	individu -> detruire = static err_t (*individu_detruire)(individu_t**);
+	individu -> afficher = individu_afficher_cb;
+	individu -> detruire = individu_detruire_cb;
 	individu_cpt++;
 	return individu;
 }

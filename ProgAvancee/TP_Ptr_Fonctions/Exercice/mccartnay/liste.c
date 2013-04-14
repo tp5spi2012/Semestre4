@@ -120,18 +120,19 @@ extern liste_t * liste_creer (const int nb) {
  */
 
 extern err_t liste_detruire( liste_t ** liste ) {
+	objet_t * tmp;
 	int i;
-	for (i = 0; i < (*liste) -> nb; i++) {
-		liste_t * tmp = malloc(sizeof(liste_t));
-		tmp = *liste;
-		(*liste) -> objet -> detruire((*liste) -> objet);
-		free((*liste) -> objet);
-		(*liste) = (*liste) -> suiv;
-		(*tmp) -> suiv = NULL;
-		(*tmp) -> prec = NULL;
-		free(tmp);
+	if (liste_existe(*liste)) {
+		if (!liste_vide(*liste)) {
+			for (i = 0; i < liste_nb_lire(*liste); i++) {
+				if ((tmp = liste_elem_lire(*liste, i)) != NULL)
+					tmp -> detruire(&tmp);
+			}
+		}
+		free((*liste) -> liste);
+		free(*liste);
+		liste_cpt--;
 	}
-	free((*liste));
 	return OK;
 }
 
@@ -143,9 +144,14 @@ extern err_t liste_detruire( liste_t ** liste ) {
  */
 
 extern void liste_afficher (liste_t * const liste, const char separateur) {
+	objet_t * tmp;
 	int i;
-	for (i = 0; i < (*liste) -> nb; i++) {
-		(*liste) -> objet -> afficher(*objet);
-		printf("%c", separateur);
+	if (liste_existe(liste)) {
+		for (i = 0; i < liste_nb_lire(liste); i++) {
+			if ((tmp = liste_elem_lire(liste, i)) != NULL) {
+				tmp -> afficher(tmp);
+				printf("%c", separateur);
+			}
+		}
 	}
 }
