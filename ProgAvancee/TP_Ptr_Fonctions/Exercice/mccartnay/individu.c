@@ -39,6 +39,11 @@ static void individu_afficher( individu_t * const individu ) {
 	printf( "}" ) ;
 }
 
+static void individu_afficher_cb (objet_t * individu) {
+	(individu_t *) individu;
+	individu_afficher(*individu);
+}
+
 extern individu_t * individu_creer (char * const prenom, char * const nom) {
 	individu_t * individu = NULL ;
 	individu = malloc(sizeof(individu_t));
@@ -46,7 +51,7 @@ extern individu_t * individu_creer (char * const prenom, char * const nom) {
 	strcpy(individu -> nom, nom);
 	individu -> prenom = malloc((strlen(prenom) + 1) * sizeof(char));
 	strcpy(individu -> prenom, prenom);
-	individu -> afficher = void (*individu_afficher)(individu_t *);
+	individu -> afficher = (void (*individu_afficher)(objet_t *));
 	individu -> detruire = err_t (*individu_detruire)(individu_t**);
 	individu_cpt++;
 	return individu;
