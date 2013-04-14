@@ -31,6 +31,10 @@ static err_t individu_detruire( individu_t ** individu ) {
 	return OK;
 }
 
+static err_t individu_detruire_cb (objet_t ** individu) {
+	individu_detruire((individu_t **) individu);
+}
+
 static void individu_afficher( individu_t * const individu ) {
 	printf( "{" ) ;
 	if(  individu_existe(individu) ) {
@@ -40,8 +44,7 @@ static void individu_afficher( individu_t * const individu ) {
 }
 
 static void individu_afficher_cb (objet_t * individu) {
-	(individu_t *) individu;
-	individu_afficher(*individu);
+	individu_afficher((individu_t *) individu);
 }
 
 extern individu_t * individu_creer (char * const prenom, char * const nom) {
@@ -51,8 +54,9 @@ extern individu_t * individu_creer (char * const prenom, char * const nom) {
 	strcpy(individu -> nom, nom);
 	individu -> prenom = malloc((strlen(prenom) + 1) * sizeof(char));
 	strcpy(individu -> prenom, prenom);
-	individu -> afficher = (void (*individu_afficher)(objet_t *));
-	individu -> detruire = err_t (*individu_detruire)(individu_t**);
+	individu -> afficher = malloc(sizeof(static void individu_afficher_cb()));
+	individu -> afficher = static void (*individu_afficher_cb)(objet_t*);
+	individu -> detruire = static err_t (*individu_detruire)(individu_t**);
 	individu_cpt++;
 	return individu;
 }
