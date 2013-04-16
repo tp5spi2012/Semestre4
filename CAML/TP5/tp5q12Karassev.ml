@@ -74,13 +74,4 @@
 		| _ _ -> failwith "erreur arbre_synt";;
 
 	(* Q2 *) arbre_synt (trans char2terme (analyselex(lire_car "expinv.txt"))) vide;;
-		 
-	(* let rec pair = function n ->
-		if n > 0 then impair (n-1)
-		else if n < 0 then impair (n+1)
-		else 1
-		and impair = function n -> 
-			if n > 0 then pair (n-1)
-			else if n < 0 then pair (n+1)
-			else 0;; *)
 
