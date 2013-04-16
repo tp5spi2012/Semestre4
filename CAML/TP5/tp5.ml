@@ -64,12 +64,12 @@ let op2fun = function op "+" -> prefix +
     |op "/" -> prefix /
     | _ -> failwith "impossible";;
 
-let valeur = fun (op o as ope) (entier v1) (entier v2) ->
-    entier ((op2fun ope) v1 v2)
+let valeur = fun (op o as ope) (entier v1) (entier v2) -> ((op2fun ope) v1 v2)
     | _ _ _ -> failwith "erreur dans la fonction valeur";;
 
-let reduire = function cons(t2, cons (ope, cons( t1, reste))) -> cons(valeur ope t1 t2, reste)
+let reduire = function cons(t2, cons (ope, cons( t1, reste))) -> cons( entier(valeur ope t1 t2), reste)
     |_ -> failwith "erreur";;
+
 
 let rec calculer = fun vide (cons(entier v, vide)) -> v
     | (cons(po, reste)) pile -> calculer reste pile
@@ -79,11 +79,41 @@ let rec calculer = fun vide (cons(entier v, vide)) -> v
 
 let calculer_ebp = function ebp -> calculer ebp vide;;
 
-let rec calculer_inv = function vide -> vide
+let rec saute_exp = function cons((entier v), reste) -> reste
+    | cons((op ope), reste) -> saute_exp(saute_exp(reste))
+	| _ -> failwith "erreur";;
+
+let rec reduire_inv = function cons(ope, cons(t1, cons(t2, reste))) -> cons(entier (valeur ope t1 t2), reste)
+	| _ -> failwith "erreur dans reduire in";;
+
+let rec calcul_inv = fun vide (cons(entier v, vide)) -> v
+	| (cons(op ope, reste)) pile -> calcul_inv reste (reduire_inv (cons (op ope, pile)))
+	| (cons(e, reste)) pile -> calcul_inv reste (cons(e, pile))
+	| _ _ -> failwith "erreur dans calculer expressio inverse";;
 
 
 (*Question 1*)
-let lire_ebp = 
-let lecture_et_calcul_inv = function nom ->  (trans char2terme (analyselex(lire_car nom)));;
 
-lecture_et_calculer_ebp "expinv.txt";;
+let lecture= function nom -> (trans ch2terme (analyselex(lire_car nom)));;
+
+
+calcul_inv (lecture "expinv.txt") vide;;
+
+(**)
+(*Question 2*)
+
+
+(*declaration des types et fonctions pour arbres*)
+
+type 'a arbre = V | N of 'a * 'a arbre * 'a arbre;;
+
+let reduire_arbre = fun ope (cons(a1, cons(a2, reste))) -> cons( N( op ope, a2, a1), reste)
+	| _ _ -> failwith "erreur dans reduire l arbre";;
+
+let rec arbre_synt = fun vide (cons(a, vide)) -> a
+	| (cons(op ope, reste)) pile -> arbre_synt reste (reduire_arbre ope pile)
+	| (cons(e, reste)) pile -> arbre_synt reste (cons( N(e, V, V), pile))
+	| _ _ -> failwith "erreur fabrication arbre";;
+
+arbre_synt (lecture "expinv.txt") vide;;
+
