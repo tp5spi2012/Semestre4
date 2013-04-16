@@ -61,16 +61,26 @@
 		| (cons(t,reste)) pile -> calculer reste (cons(t,pile))
 		| _ _ -> failwith "erreur calculer";;
 	
-	calculer (trans char2terme (analyselex(lire_car "expinv.txt"))) vide;;
+	(* Q1 *) calculer (trans char2terme (analyselex(lire_car "expinv.txt"))) vide;;
 
-	let saute_entier = function
-			cons(entier v,reste) -> reste
-		| _ -> failwith "erreur saute_entier";;
+	let reduire_arbre = function
+		  ((op ope), cons(a1, cons(a2, reste))) -> cons(N(op ope, a2, a1), reste)
+		| _ -> failwith "erreur reduire_arbre";;
+	
+	let rec arbre_synt = fun
+		  vide (cons(tete, vide)) -> tete 
+		| (cons(entier v, reste)) pile -> arbre_synt reste (cons(N(entier v, V, V), pile))
+		| (cons(op ope, reste)) pile -> arbre_synt reste (reduire_arbre(op ope, pile))
+		| _ _ -> failwith "erreur arbre_synt";;
 
-	let operateur = function
-			cons(op ope,reste) -> op ope
-		| _ -> failwith "erreur operateur";;
+	(* Q2 *) arbre_synt (trans char2terme (analyselex(lire_car "expinv.txt"))) vide;;
+		 
+	(* let rec pair = function n ->
+		if n > 0 then impair (n-1)
+		else if n < 0 then impair (n+1)
+		else 1
+		and impair = function n -> 
+			if n > 0 then pair (n-1)
+			else if n < 0 then pair (n+1)
+			else 0;; *)
 
-	let valeur = function
-			cons(entier v as x,reste) -> x
-		| _ -> failwith "erreur valeur";;
