@@ -1,0 +1,70 @@
+#include <stdlib.h>
+#include <string.h>
+#include <fraction.h>
+
+
+/*
+ * VARIABLE LOCALE
+ */
+
+unsigned long int fraction_cpt = 0 ; 
+
+/* 
+ * FONCTIONS
+ */
+
+extern 
+booleen_t fraction_existe( fraction_t * const fraction )
+{
+  if( fraction == NULL ) 
+    return(FAUX) ;
+  else
+    return(VRAI) ; 
+}
+
+static 
+err_t fraction_detruire( fraction_t ** fraction ) 
+{
+  free((*fraction)->numerateur);
+  free((*fraction)->denominateur);
+  
+  (*fraction)->detruire = NULL;
+  (*fraction)->afficher = NULL;
+  
+  free(*fraction);
+  
+  fraction_cpt--;
+
+  return(OK) ; 
+}
+
+static
+void fraction_afficher( fraction_t * const fraction ) 
+{
+
+  printf( "{" ) ; 
+  if(  fraction_existe(fraction) ) 
+    {
+      printf( "%d/%d" , fraction->numerateur , fraction->denominateur ) ;
+    }
+  printf( "}" ) ; 
+}
+
+extern 
+fraction_t * fraction_creer( const int numerateur , const int denominateur ) 
+{
+  individu_t * individu = NULL ; 
+ 
+ 	individu = (individu_t *)malloc(sizeof(individu_t));
+	individu->prenom = (char*)malloc(strlen(prenom)*sizeof(char) + 1);
+	individu->nom = (char*)malloc(strlen(nom)*sizeof(char) + 1);
+	
+	strcpy(individu->prenom, prenom);
+	strcpy(individu->nom, nom);
+	individu->detruire = (err_t (*)(objet_t**)) individu_detruire;
+	individu->afficher = (void (*)(objet_t *)) individu_afficher;
+	
+	individu_cpt++;
+
+  return( fraction ) ;
+}
